@@ -10,7 +10,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274007",
+    "id": 1274007,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SPJC",
@@ -42,7 +42,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274047",
+    "id": 1274047,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FAOR",
@@ -66,7 +66,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1348562",
+    "id": 1348562,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "RUSP",
@@ -93,7 +93,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274049",
+    "id": 1274049,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FAOR",
@@ -117,7 +117,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274057",
+    "id": 1274057,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "NFFN",
@@ -145,7 +145,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274071",
+    "id": 1274071,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "RUMG",
@@ -174,7 +174,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274073",
+    "id": 1274073,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -202,7 +202,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274075",
+    "id": 1274075,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -232,7 +232,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274077",
+    "id": 1274077,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "YMMC",
@@ -260,7 +260,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274079",
+    "id": 1274079,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -292,7 +292,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274083",
+    "id": 1274083,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -321,7 +321,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274085",
+    "id": 1274085,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -349,7 +349,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274087",
+    "id": 1274087,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -377,7 +377,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274091",
+    "id": 1274091,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SEGU",
@@ -405,7 +405,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274093",
+    "id": 1274093,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "MMMX",
@@ -432,7 +432,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274095",
+    "id": 1274095,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -461,7 +461,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274097",
+    "id": 1274097,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SACO",
@@ -490,7 +490,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274099",
+    "id": 1274099,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -519,7 +519,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274101",
+    "id": 1274101,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -548,7 +548,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274103",
+    "id": 1274103,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "KKCI",
@@ -577,7 +577,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274105",
+    "id": 1274105,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -606,7 +606,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274111",
+    "id": 1274111,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SCIP",
@@ -633,7 +633,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274115",
+    "id": 1274115,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "LPMG",
@@ -662,7 +662,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274117",
+    "id": 1274117,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "ZUUU",
@@ -691,7 +691,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274119",
+    "id": 1274119,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "RPLL",
@@ -719,7 +719,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274121",
+    "id": 1274121,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "WAAA",
@@ -743,7 +743,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274123",
+    "id": 1274123,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "WAAA",
@@ -768,7 +768,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274125",
+    "id": 1274125,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FIMP",
@@ -790,7 +790,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274127",
+    "id": 1274127,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "TFFF",
@@ -818,7 +818,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274129",
+    "id": 1274129,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "GOOY",
@@ -845,7 +845,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274131",
+    "id": 1274131,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "YMMC",
@@ -874,7 +874,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274133",
+    "id": 1274133,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "KKCI",
@@ -902,7 +902,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274135",
+    "id": 1274135,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "OPKC",
@@ -936,7 +936,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274137",
+    "id": 1274137,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "ZUUU",
@@ -965,7 +965,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274139",
+    "id": 1274139,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "MHTG",
@@ -992,7 +992,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274141",
+    "id": 1274141,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SCCI",
@@ -1023,7 +1023,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274143",
+    "id": 1274143,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "YMMC",
@@ -1059,7 +1059,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274149",
+    "id": 1274149,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -1087,7 +1087,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274151",
+    "id": 1274151,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -1115,7 +1115,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274153",
+    "id": 1274153,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SCCI",
@@ -1145,7 +1145,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274155",
+    "id": 1274155,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SEGU",
@@ -1173,7 +1173,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274157",
+    "id": 1274157,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SEGU",
@@ -1201,7 +1201,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274159",
+    "id": 1274159,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "RKSI",
@@ -1230,7 +1230,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274161",
+    "id": 1274161,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "ZGGG",
@@ -1259,7 +1259,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274163",
+    "id": 1274163,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "LFPW",
@@ -1288,7 +1288,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274165",
+    "id": 1274165,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "LFPW",
@@ -1317,7 +1317,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274167",
+    "id": 1274167,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "WAAA",
@@ -1342,7 +1342,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274169",
+    "id": 1274169,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "WIII",
@@ -1370,7 +1370,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274171",
+    "id": 1274171,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "ZSSS",
@@ -1402,7 +1402,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274173",
+    "id": 1274173,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "YMMC",
@@ -1429,7 +1429,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274175",
+    "id": 1274175,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FMMI",
@@ -1457,7 +1457,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274177",
+    "id": 1274177,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "KKCI",
@@ -1485,7 +1485,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274179",
+    "id": 1274179,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "ZJHK",
@@ -1514,7 +1514,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274181",
+    "id": 1274181,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SCCI",
@@ -1542,7 +1542,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274183",
+    "id": 1274183,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "WIII",
@@ -1570,7 +1570,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274185",
+    "id": 1274185,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "EGRR",
@@ -1599,7 +1599,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274187",
+    "id": 1274187,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "UACC",
@@ -1629,7 +1629,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274189",
+    "id": 1274189,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SBGL",
@@ -1657,7 +1657,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274191",
+    "id": 1274191,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "KKCI",
@@ -1686,7 +1686,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274193",
+    "id": 1274193,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FAOR",
@@ -1711,7 +1711,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274195",
+    "id": 1274195,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FCBB",
@@ -1741,7 +1741,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274197",
+    "id": 1274197,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "EGRR",
@@ -1771,7 +1771,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274199",
+    "id": 1274199,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "EBBR",
@@ -1797,7 +1797,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274201",
+    "id": 1274201,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FBSK",
@@ -1825,7 +1825,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274203",
+    "id": 1274203,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SLLP",
@@ -1855,7 +1855,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274205",
+    "id": 1274205,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "SAME",
@@ -1885,7 +1885,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274209",
+    "id": 1274209,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "RJTD",
@@ -1914,7 +1914,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274211",
+    "id": 1274211,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "NZKL",
@@ -1943,7 +1943,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274213",
+    "id": 1274213,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "NZKL",
@@ -1972,7 +1972,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274215",
+    "id": 1274215,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "CWAO",
@@ -2001,7 +2001,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274217",
+    "id": 1274217,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "MMMX",
@@ -2029,7 +2029,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274219",
+    "id": 1274219,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "MMMX",
@@ -2057,7 +2057,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274221",
+    "id": 1274221,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "FAOR",
@@ -2087,7 +2087,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274223",
+    "id": 1274223,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "WIII",
@@ -2115,7 +2115,7 @@
     }
   },
   { "type": "Feature",
-    "id": "1274225",
+    "id": 1274225,
     "properties": {
       "data": "ISIGMET",
       "icaoId": "YBRF",

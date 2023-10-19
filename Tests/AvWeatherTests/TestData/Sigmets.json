@@ -1,7 +1,7 @@
 { "type": "FeatureCollection",
   "features": [
   { "type": "Feature",
-    "id": "932777",
+    "id": 932777,
     "properties": {
       "data": "SIGMET",
       "icaoId": "KSLC",
@@ -10,7 +10,7 @@
       "hazard": "TURB",
       "validTimeFrom": "2022-12-28T14:46:00Z",
       "validTimeTo": "2022-12-28T18:46:00Z",
-      "severity": "4",
+      "severity": 4,
       "altitudeLow1": 0,
       "altitudeHi2": 20000,
       "rawAirSigmet": "WSUS05 KKCI 281446 \nSLCO WS 281446 \nSIGMET OSCAR 6 VALID UNTIL 281846 \nSIGMET  \nCO NM \nFROM 50W ALS TO 20ESE TBE TO 30N INK TO ELP TO 50W ALS \nOCNL SEV TURB BLW FL200. DUE TO STG LOW LVL WNDS AND MTN WV ACT. \nCONDS CONTG BYD 1846Z."
@@ -23,7 +23,7 @@
     }
   },
   { "type": "Feature",
-    "id": "932869",
+    "id": 932869,
     "properties": {
       "data": "SIGMET",
       "icaoId": "KKCI",
@@ -32,7 +32,7 @@
       "hazard": "CONVECTIVE",
       "validTimeFrom": "2022-12-28T15:55:00Z",
       "validTimeTo": "2022-12-28T17:55:00Z",
-      "severity": "2",
+      "severity": 2,
       "altitudeHi1": 30000,
       "altitudeHi2": 30000,
       "rawAirSigmet": "WSUS33 KKCI 281555 \nSIGW  \nCONVECTIVE SIGMET 13W \nVALID UNTIL 1755Z \nAZ UT NV \nFROM 40NNE BCE-40NE PGS-50E BTY-30SSW ILC-40NNE BCE \nAREA EMBD TS MOV FROM 28020KT. TOPS TO FL300. \n \n"

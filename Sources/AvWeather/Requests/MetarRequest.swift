@@ -11,8 +11,8 @@ import Foundation
 public class MetarRequest: NSObject, XMLParserDelegate, ADDSRequest {
     
     public typealias Response = [Metar]
-    public var servicePath: String = "/adds/dataserver_current/httpparam"
-    
+    public var servicePath: String = "/cgi-bin/data/dataserver.php"
+
     public let stationString: [String]
     public let hoursBeforeNow: Int
     public var queryParams: [URLQueryItem]
@@ -180,6 +180,11 @@ public class MetarRequest: NSObject, XMLParserDelegate, ADDSRequest {
                 currentItem.dewpoint = value
                 
             case "wind_dir_degrees":
+                // A value of `0` indicates the wind direction is variable. (degrees)
+                // But it is "VRB" in the response...
+                if buffer == "VRB" {
+                    buffer = "0"
+                }
                 guard let value = Int(buffer) else {
                     parsingErrorMessage = "Failed to parse wind direction."
                     parser.abortParsing()
@@ -204,6 +209,12 @@ public class MetarRequest: NSObject, XMLParserDelegate, ADDSRequest {
                 currentItem.windGust = value
                 
             case "visibility_statute_mi":
+
+                //9999 is represented by "6+" statute miles. This will fail the parsing.
+                //Let this be represented by 6.2131
+                if buffer == "6+" {
+                    buffer = "6.2131"
+                }
                 guard let value = Double(buffer) else {
                     parsingErrorMessage = "Failed to parse visbility."
                     parser.abortParsing()

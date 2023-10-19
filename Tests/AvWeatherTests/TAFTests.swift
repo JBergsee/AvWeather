@@ -11,7 +11,7 @@ import XCTest
 class TAFTests: XCTestCase {
 
     func testTAFRequest() {
-        let url = "https://aviationweather.gov/adds/dataserver_current/httpparam"
+        let url = "https://aviationweather.gov/cgi-bin/data/dataserver.php"
 
         let sourceFile = URL(fileURLWithPath: #file)
         let directory = sourceFile.deletingLastPathComponent()

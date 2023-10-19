@@ -51,7 +51,7 @@ class SigmetTests: XCTestCase {
                 // check data
                 XCTAssert(testSigmets.count == 75, "Wrong number of Sigmets")
                 
-                let sigmet = testSigmets.first(where: { $0.id == "1274007"} )! //First in json file, not in sorted sigmets.
+                let sigmet = testSigmets.first(where: { $0.id == 1274007} )! //First in json file, not in sorted sigmets.
                 
                 XCTAssert(sigmet.type == .international)
                 XCTAssert(sigmet.text == "WVPR31 SPJC 280900\nSPIM SIGMET 2 VALID 280930/281530 SPJC-\nSPIM LIMA FIR VA ERUPTION MT SABANCAYA PSN S1547 W07150\nVA CLD OBS AT 0820Z VA NOT IDENTIFIABLE FM STLT DATA=")
@@ -122,7 +122,7 @@ class SigmetTests: XCTestCase {
                 // check data
                 XCTAssert(testSigmets.count == 2, "Wrong number of Sigmets")
                 
-                let sigmet = testSigmets.first(where: { $0.id == "932777"} )! //First in json file, not in sorted sigmets.
+                let sigmet = testSigmets.first(where: { $0.id == 932777} )! //First in json file, not in sorted sigmets.
                 
                 XCTAssert(sigmet.type == .usOnly)
                 XCTAssert(sigmet.text == "WSUS05 KKCI 281446 \nSLCO WS 281446 \nSIGMET OSCAR 6 VALID UNTIL 281846 \nSIGMET  \nCO NM \nFROM 50W ALS TO 20ESE TBE TO 30N INK TO ELP TO 50W ALS \nOCNL SEV TURB BLW FL200. DUE TO STG LOW LVL WNDS AND MTN WV ACT. \nCONDS CONTG BYD 1846Z.")
@@ -135,7 +135,7 @@ class SigmetTests: XCTestCase {
                 XCTAssert(sigmet.properties.validTimeFrom == date)
                 date = formatter.date(from: "2022-12-28T18:46:00Z")
                 XCTAssert(sigmet.properties.validTimeTo == date)
-                XCTAssert(sigmet.properties.severityValue == 4)
+                XCTAssert(sigmet.properties.severity == 4)
                 XCTAssert(sigmet.properties.altitudeLow1 == 0)
                 XCTAssert(sigmet.properties.altitudeHi2 == 20000)
                 XCTAssert(sigmet.properties.rawSigmet == nil)

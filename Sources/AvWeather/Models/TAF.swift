@@ -150,6 +150,7 @@ public struct TAF: Codable {
         /// Percent probability
         public var probability: Int?
         /// Wind direction-the direction in degrees from where the wind is blowing
+        /// A value of `0` indicates the wind direction is variable. (degrees)
         public var windDirDegrees: Int?
         /// Wind speed
         public var windSpeedKt: Int?
@@ -162,6 +163,8 @@ public struct TAF: Codable {
         ///  Wind shear speed
         public var windShearSpeedKt: Int?
         /// Visibility (horizontal)
+        /// 9999m is represented by "6+" statute miles. This will fail the parsing.
+        /// Therefore, a visibility of 6+ SM is represented by 6.2131
         public var visibilityStatuteMi: Double?
         /// Altimeter in inches of mercury
         public var altimInHg: Double?

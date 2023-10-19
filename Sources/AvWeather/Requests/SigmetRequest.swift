@@ -42,7 +42,7 @@ public class SigmetRequest: NSObject, AWCRequest {
          */
         
         servicePath = "/cgi-bin/json/IsigmetJSON.php"
-        
+
         if type == .usOnly {
             servicePath = "/cgi-bin/json/SigmetJSON.php"
         }

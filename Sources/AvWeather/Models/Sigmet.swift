@@ -19,7 +19,7 @@ public enum SigmetType {
 public struct Sigmet: Codable {
     
     public let properties: SigmetProperties
-    public let id: String?
+    public let id: Int?
     public let geometry: SigmetGeometry?
     
     //Shortcut to text:
@@ -82,12 +82,8 @@ public struct Sigmet: Codable {
         /// SIGMET, OUTLOOK
         public let airSigmetType: String?
         public let alphaChar: String?
-        /// integer severity value (typically 1 or 2, 0 for outlook)
-        public var severityValue: Int? {
-            Int(severity ?? "")
-        }
-        /// Severity as String
-        public let severity: String? //Used for encode/decode
+        /// Severity (typically 1 or 2, 0 for outlook)
+        public let severity: Int?
         /// Lowest level SIGMET is valid in feet
         public let altitudeLow1: Int?
         /// Secondary lowest level SIGMET is valid in feet
