@@ -90,8 +90,8 @@ public struct Metar: Codable {
     /// Wind gust. (knots)
     public var windGust: Int
     /// Horizontal visibility. (statute miles)
-    /// 9999m is represented by "6+" statute miles. This will fail the parsing.
-    /// Therefore, a visibility of 6+ SM is represented by 6.2131
+    /// "6+" and "10+" Will fail the parsing
+    /// Therefore, a visibility of 6+ SM is represented by 6 and 10+ as 10
     public var visibility: Double
     /// Altimeter setting. (inches of Hg)
     public var altimeter: Double

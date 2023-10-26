@@ -163,8 +163,8 @@ public struct TAF: Codable {
         ///  Wind shear speed
         public var windShearSpeedKt: Int?
         /// Visibility (horizontal)
-        /// 9999m is represented by "6+" statute miles. This will fail the parsing.
-        /// Therefore, a visibility of 6+ SM is represented by 6.2131
+        /// "6+" and "10+" will fail the parsing
+        /// Therefore, a visibility of 6+ SM is represented by 6 and 10+ as 10
         public var visibilityStatuteMi: Double?
         /// Altimeter in inches of mercury
         public var altimInHg: Double?

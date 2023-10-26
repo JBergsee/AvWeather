@@ -32,6 +32,7 @@ public class MetarRequest: NSObject, XMLParserDelegate, ADDSRequest {
     }
     
     public init(forStations stationString: [String], hoursBeforeNow: Int = 2, mostRecent: Bool = false) {
+
         self.stationString = stationString
         self.hoursBeforeNow = hoursBeforeNow
         
@@ -210,13 +211,16 @@ public class MetarRequest: NSObject, XMLParserDelegate, ADDSRequest {
                 
             case "visibility_statute_mi":
 
-                //9999 is represented by "6+" statute miles. This will fail the parsing.
-                //Let this be represented by 6.2131
+                /// "6+" and "10+" will fail the parsing
+                /// Therefore, a visibility of 6+ SM is represented by 6 and 10+ as 10
                 if buffer == "6+" {
-                    buffer = "6.2131"
+                    buffer = "6"
+                }
+                if buffer == "10+" {
+                    buffer = "10"
                 }
                 guard let value = Double(buffer) else {
-                    parsingErrorMessage = "Failed to parse visbility."
+                    parsingErrorMessage = "Failed to parse visibility."
                     parser.abortParsing()
                     return
                 }

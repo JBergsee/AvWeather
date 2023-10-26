@@ -66,9 +66,9 @@ public class SigmetRequest: NSObject, AWCRequest {
         do {
             let response = try jsonDecoder.decode(SigmetResponse.self, from: data)
             var sigmets = response.features
-            //First one in international sigmets is just response data, should not be included in response
+            //First one is just response data, should not be included in response
             //print(String(decoding: data, as: UTF8.self))
-            if sigmets.last?.type == .international {
+            if sigmets.first?.id == nil {
                 sigmets.removeFirst()
             }
             // sort sigmets by issue time, latest issue is first in the array
