@@ -27,6 +27,7 @@ class WeatherViewController: UIViewController {
                 switch response {
                 case .success(let metars):
                     // do something with new METAR data
+                    self?.resultView.text.append("***   \(metars.count) Metars retrieved:   ***\n\n")
                     metars.forEach { metar in
                         self?.resultView.text.append("\(metar.rawText)\n")
                     }
@@ -48,6 +49,7 @@ class WeatherViewController: UIViewController {
             DispatchQueue.main.async {
                 switch response {
                 case .success(let tafs):
+                    self?.resultView.text.append("***   \(tafs.count) TAFs retrieved:   ***\n\n")
                     tafs.forEach { taf in
                         self?.resultView.text.append("\(taf.rawText)\n")
                     }
@@ -68,7 +70,7 @@ class WeatherViewController: UIViewController {
             DispatchQueue.main.async {
                 switch response {
                 case .success(let sigmets):
-                    self?.resultView.text.append("***   \(sigmets.count) Sigmets retrieved:   ***\n\n")
+                    self?.resultView.text.append("***   \(sigmets.count) International Sigmets retrieved:   ***\n\n")
                     sigmets.forEach { sigmet in
                         self?.resultView.text.append("\(sigmet.properties.rawSigmet ?? sigmet.properties.rawAirSigmet ?? "[no text]")\n\n")
                     }
@@ -89,7 +91,7 @@ class WeatherViewController: UIViewController {
             DispatchQueue.main.async {
                 switch response {
                 case .success(let sigmets):
-                    self?.resultView.text.append("***   \(sigmets.count) Sigmets retrieved:   ***\n\n")
+                    self?.resultView.text.append("***   \(sigmets.count) US Sigmets retrieved:   ***\n\n")
                     sigmets.forEach { sigmet in
                         self?.resultView.text.append("\(sigmet.properties.rawSigmet ?? sigmet.properties.rawAirSigmet ?? "[no text]")\n\n")
                     }

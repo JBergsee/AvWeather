@@ -9,14 +9,14 @@ import Foundation
 
 
 public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
-    
+
     public typealias Response = [TAF]
-    public var servicePath: String = "/cgi-bin/data/dataserver.php"
-    
+    public var servicePath: String = "/api/data/dataserver"
+
     public let stationString: [String]
     public let hoursBeforeNow: Int
     public var queryParams: [URLQueryItem]
-    
+
     private enum parsingState {
         case taf
         case forecast
@@ -28,15 +28,15 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
     private var buffer: String = ""
     private var parsingErrorMessage: String = ""
     private var tafs: [TAF] = []
-    
+
     public convenience init(forStation stationString: String, hoursBeforeNow: Int = 12, mostRecent: Bool = false) {
         self.init(forStations: [stationString], hoursBeforeNow: hoursBeforeNow, mostRecent: mostRecent)
     }
-    
+
     public init(forStations stationString: [String], hoursBeforeNow: Int = 12, mostRecent: Bool = false) {
         self.stationString = stationString
         self.hoursBeforeNow = hoursBeforeNow
-        
+
         /*
          * See https://www.aviationweather.gov/dataserver/example?datatype=taf
          * for details of possible parameters.
@@ -46,12 +46,12 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
             URLQueryItem(name: "hoursBeforeNow", value: String(hoursBeforeNow)),
             URLQueryItem(name: "stationString", value: self.stationString.joined(separator: ",")),
         ]
-        
+
         if mostRecent {
             queryParams.append(URLQueryItem(name: "mostRecentForEachStation", value: "true")) //Documentation at AWC calls for "constraint", but that option fails sometimes.
         }
     }
-    
+
     public func decode(with data: Data) throws -> [TAF] {
         // parse data from AWC and create an array of TAF structs
         let xmlParser = XMLParser.init(data: data)
@@ -59,43 +59,43 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
         if !xmlParser.parse() {
             throw AvWeatherError.parsing(message: parsingErrorMessage)
         }
-        
+
         // sort tafs by issue time, latest issue is first in the array
         let sortedTafs = tafs.sorted {
             $0.issueTime > $1.issueTime
         }
-        
+
         return sortedTafs
     }
-    
+
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        
+
         switch elementName {
-            
+
         case "data":
             guard let strCount = attributeDict["num_results"],
                   let count = Int(strCount) else {
-                      parsingErrorMessage = "Failed to parse TAF XML."
-                      parser.abortParsing()
-                      return
-                  }
-            
+                parsingErrorMessage = "Failed to parse TAF XML."
+                parser.abortParsing()
+                return
+            }
+
             // AWC will return 0 results with an invalid station string (or no string)
             guard count > 0 else {
                 parsingErrorMessage = "Invalid station string."
                 parser.abortParsing()
                 return
             }
-            
+
         case "TAF":
             currentState = .taf
             currentTaf = TAF()
-            
+
         case "forecast":
             //Starting a new Forecast within a TAF
             currentState = .forecast
             currentForecast = TAF.Forecast()
-            
+
         case "sky_condition":
             if currentState == .forecast {
                 if let skyCover = attributeDict["sky_cover"] {
@@ -112,22 +112,46 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                 }
                 return
             }
-            
+
         case "turbulence_condition":
-            print("Please implement parsing of turbulence condition or post an issue on github giving the TAF station, time and attributeDict below:")
-            print(attributeDict)
+
+            if currentState == .forecast {
+                if let maxAltStr = attributeDict["turbulence_max_alt_ft_agl"],
+                   let minAltStr = attributeDict["turbulence_min_alt_ft_agl"],
+                   let intensityStr = attributeDict["turbulence_intensity"],
+                   let maxAlt = Int(maxAltStr),
+                   let minAlt = Int(minAltStr),
+                   let intensity = Int(intensityStr) {
+                    let turbulence = TAF.TurbulenceCondition(turbulenceIntensity: Int(intensity),
+                                                             turbulenceMinAltFtAgl: Int(minAlt),
+                                                             turbulenceMaxAltFtAgl: Int(maxAlt))
+                    currentForecast.turbulenceCondition.append(turbulence)
+                }
+            }
+
             return
-            
+
         case "icing_condition":
-            print("Please implement parsing of icing condition or post an issue on github giving the TAF station, time and attributeDict below:")
-            print(attributeDict)
+            if currentState == .forecast {
+                if let maxAltStr = attributeDict["icing_max_alt_ft_agl"],
+                   let minAltStr = attributeDict["icing_min_alt_ft_agl"],
+                   let intensityStr = attributeDict["icing_intensity"],
+                   let maxAlt = Int(maxAltStr),
+                   let minAlt = Int(minAltStr),
+                   let intensity = Int(intensityStr) {
+                    let icing = TAF.IcingCondition(icingIntensity: Int(intensity),
+                                                   icingMinAltFtAgl: Int(minAlt),
+                                                   icingMaxAltFtAgl: Int(maxAlt))
+                    currentForecast.icingCondition.append(icing)
+                }
+            }
             return
-            
+
         case "temperature":
             print("Please implement parsing of temperatures or post an issue on github giving the TAF station, time and attributeDict below:")
             print(attributeDict)
             return
-            
+
         default:
             // this is a new element, so clear the data buffer
             buffer = ""
@@ -135,11 +159,11 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
         }
         buffer = ""
     }
-    
+
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        
+
         switch elementName {
-            
+
         case "error":
             //Check for errors in XML response
             if !buffer.isEmpty {
@@ -147,7 +171,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                 parser.abortParsing()
             }
             return
-            
+
         case "warning":
             //Log any warnings in XML response
             if !buffer.isEmpty {
@@ -155,30 +179,30 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                 print(buffer)
             }
             return
-            
+
         case "TAF" :
             // found end of the TAF section, so save the data
             tafs.append(currentTaf)
             currentState = .none
             return
-            
+
         case "forecast" :
             // found end of the Forecast section, so save the data
             currentTaf.forecast.append(currentForecast)
             currentState = .taf
             return
-            
+
         default:
-            
+
             if currentState == .taf {
                 // found end of an element under TAF, so add the data to currentTaf
                 switch elementName {
                 case "raw_text":
                     currentTaf.rawText = buffer
-                    
+
                 case "station_id":
                     currentTaf.stationId = buffer
-                    
+
                 case "issue_time":
                     let formatter = ISO8601DateFormatter()
                     if let date = formatter.date(from: buffer) {
@@ -188,7 +212,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         parser.abortParsing()
                         return
                     }
-                    
+
                 case "bulletin_time":
                     let formatter = ISO8601DateFormatter()
                     if let date = formatter.date(from: buffer) {
@@ -198,7 +222,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         parser.abortParsing()
                         return
                     }
-                    
+
                 case "valid_time_from":
                     let formatter = ISO8601DateFormatter()
                     if let date = formatter.date(from: buffer) {
@@ -208,7 +232,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         parser.abortParsing()
                         return
                     }
-                    
+
                 case "valid_time_to":
                     let formatter = ISO8601DateFormatter()
                     if let date = formatter.date(from: buffer) {
@@ -218,10 +242,10 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         parser.abortParsing()
                         return
                     }
-                    
+
                 case "remarks":
                     currentTaf.remarks = buffer
-                    
+
                 case "latitude":
                     guard let value = Double(buffer) else {
                         parsingErrorMessage = "Failed to parse latitude."
@@ -229,7 +253,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentTaf.latitude = value
-                    
+
                 case "longitude":
                     guard let value = Double(buffer) else {
                         parsingErrorMessage = "Failed to parse longitude."
@@ -237,7 +261,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentTaf.longitude = value
-                    
+
                 case "elevation_m":
                     guard let value = Double(buffer) else {
                         parsingErrorMessage = "Failed to parse station elevation."
@@ -248,11 +272,11 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                 default:
                     return
                 }
-                
+
             } else if currentState == .forecast {
                 // found end of an element under Forecast, so add the data to currentForecast
                 switch elementName {
-                    
+
                 case "fcst_time_from":
                     let formatter = ISO8601DateFormatter()
                     if let date = formatter.date(from: buffer) {
@@ -271,7 +295,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         parser.abortParsing()
                         return
                     }
-                    
+
                 case "change_indicator":
                     guard let changeIndicator = TAF.Forecast.ChangeIndicator(rawValue: buffer) else {
                         parsingErrorMessage = "Failed to parse Forecast change indicator."
@@ -279,7 +303,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.changeIndicator = changeIndicator
-                    
+
                 case "time_becoming":
                     let formatter = ISO8601DateFormatter()
                     if let date = formatter.date(from: buffer) {
@@ -289,7 +313,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         parser.abortParsing()
                         return
                     }
-                    
+
                 case "probability":
                     guard let value = Int(buffer) else {
                         parsingErrorMessage = "Failed to parse probability."
@@ -297,7 +321,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.probability = value
-                    
+
                 case "wind_dir_degrees":
                     // Variable wind is given as "VRB".
                     // A value of `0` indicates the wind direction is variable. (degrees)
@@ -310,7 +334,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.windDirDegrees = value
-                    
+
                 case "wind_speed_kt":
                     guard let value = Int(buffer) else {
                         parsingErrorMessage = "Failed to parse wind speed."
@@ -318,7 +342,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.windSpeedKt = value
-                    
+
                 case "wind_gust_kt":
                     guard let value = Int(buffer) else {
                         parsingErrorMessage = "Failed to parse wind gust."
@@ -326,7 +350,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.windGustKt = value
-                    
+
                 case "wind_shear_dir_degrees":
                     guard let value = Int(buffer) else {
                         parsingErrorMessage = "Failed to parse wind shear direction."
@@ -334,7 +358,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.windShearDirDegrees = value
-                    
+
                 case "wind_shear_speed_kt":
                     guard let value = Int(buffer) else {
                         parsingErrorMessage = "Failed to parse wind shear speed."
@@ -342,7 +366,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.windShearSpeedKt = value
-                    
+
                 case "wind_shear_hgt_ft_agl":
                     guard let value = Int(buffer) else {
                         parsingErrorMessage = "Failed to parse wind shear height."
@@ -350,7 +374,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.windShearHgtFtAgl = value
-                    
+
                 case "visibility_statute_mi":
                     /// "6+" and "10+" will fail the parsing
                     /// Therefore, a visibility of 6+ SM is represented by 6 and 10+ as 10
@@ -366,7 +390,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.visibilityStatuteMi = value
-                    
+
                 case "altim_in_hg":
                     guard let value = Double(buffer) else {
                         parsingErrorMessage = "Failed to parse altimeter inch Hg."
@@ -374,7 +398,7 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.altimInHg = value
-                    
+
                 case "vert_vis_ft":
                     guard let value = Double(buffer) else {
                         parsingErrorMessage = "Failed to parse vertical visbility."
@@ -382,20 +406,20 @@ public class TAFRequest: NSObject, XMLParserDelegate, AWCRequest {
                         return
                     }
                     currentForecast.vertVisFt = value
-                    
+
                 case "wx_string":
                     currentForecast.wxString = buffer
-                    
+
                 case "not_decoded":
                     currentForecast.notDecoded = buffer
-                    
+
                 default:
                     return
                 }
             }
         }
     }
-    
+
     // get data from an element
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
         buffer += string

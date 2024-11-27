@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  AvWeather-Example
 //
-//  Created by Johan Nyman on 2022-12-07.
+//  Created by Johan Bergsee on 2022-12-07.
 //
 
 import UIKit

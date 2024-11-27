@@ -11,7 +11,7 @@ import Foundation
 public class MetarRequest: NSObject, XMLParserDelegate, ADDSRequest {
     
     public typealias Response = [Metar]
-    public var servicePath: String = "/cgi-bin/data/dataserver.php"
+    public var servicePath: String = "/api/data/dataserver"
 
     public let stationString: [String]
     public let hoursBeforeNow: Int

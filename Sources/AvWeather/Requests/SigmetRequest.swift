@@ -66,6 +66,10 @@ public class SigmetRequest: NSObject, AWCRequest {
         do {
             let response = try jsonDecoder.decode(SigmetResponse.self, from: data)
             var sigmets = response.features
+            // Bugfix, check we have actually retrieved something...
+            guard !sigmets.isEmpty else {
+                return []
+            }
             //First one is just response data, should not be included in response
             //print(String(decoding: data, as: UTF8.self))
             if sigmets.first?.id == nil {
